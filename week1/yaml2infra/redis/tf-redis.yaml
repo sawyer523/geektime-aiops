@@ -16,7 +16,6 @@ spec:
         name              = "my-subnet"
         vpc_id            = tencentcloud_vpc.my_vpc.id
         cidr_block        = "10.0.1.0/24"
-        availability_zone = "ap-hongkong"
       }
       
       # 创建 Redis 实例
@@ -29,7 +28,6 @@ spec:
         subnet_id         = tencentcloud_subnet.my_subnet.id
         password          = "YourStrongPassword123"  # 请使用强密码
         project_id        = 0
-        availability_zone = "ap-hongkong"
       }
     source: Inline
   providerConfigRef:
