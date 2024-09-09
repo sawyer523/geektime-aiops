@@ -31,5 +31,6 @@ spec:
         project_id        = 0
         availability_zone = "ap-guangzhou-3"  # 替换为您想要使用的可用区
       }
+    source: Inline
   providerConfigRef:
-    name: provider-terraform
+    name: default
