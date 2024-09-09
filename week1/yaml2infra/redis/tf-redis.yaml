@@ -29,6 +29,7 @@ spec:
         subnet_id         = tencentcloud_subnet.my_subnet.id
         password          = "YourStrongPassword123"  # 请使用强密码
         project_id        = 0
+        availability_zone = "ap-hongkong"
       }
     source: Inline
   providerConfigRef:
