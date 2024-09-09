@@ -119,4 +119,8 @@ permission denied while trying to connect to the Docker daemon socket at unix://
     ❯ k -n crossplane-system apply -f ../yaml/tf-provider-config.yaml
     providerconfig.tf.upbound.io/default created
     ```
-    3. 
+    3. 配置 argocd
+        ![](assets/17258604976731.jpg)
+
+    1. 开通的 redis 信息
+        ![](assets/17258605253562.jpg)
