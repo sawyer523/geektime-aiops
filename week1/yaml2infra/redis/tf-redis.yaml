@@ -16,20 +16,20 @@ spec:
         name              = "my-subnet"
         vpc_id            = tencentcloud_vpc.my_vpc.id
         cidr_block        = "10.0.1.0/24"
-        availability_zone = "ap-hongkong"
+        availability_zone = "ap-hongkong-2"
       }
       
       # 创建 Redis 实例
       resource "tencentcloud_redis_instance" "my_redis" {
-        type_id           = 2  # 2 表示主从版
-        mem_size          = 1024  # 内存容量，单位MB
+        type_id           = 2
+        mem_size          = 1024
         name              = "my-redis"
         port              = 6379
         vpc_id            = tencentcloud_vpc.my_vpc.id
         subnet_id         = tencentcloud_subnet.my_subnet.id
-        password          = "YourStrongPassword123"  # 请使用强密码
+        password          = "YourStrongPassword123"
         project_id        = 0
-        availability_zone = "ap-hongkong"
+        availability_zone = "ap-hongkong-2"
       }
     source: Inline
   providerConfigRef:
