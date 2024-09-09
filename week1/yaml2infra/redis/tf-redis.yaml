@@ -1,0 +1,35 @@
+apiVersion: tf.upbound.io/v1beta1
+kind: Workspace
+metadata:
+  name: redis
+spec:
+  forProvider:
+    module: |
+      # 创建 VPC
+      resource "tencentcloud_vpc" "my_vpc" {
+        name       = "my-vpc"
+        cidr_block = "10.0.0.0/16"
+      }
+      
+      # 创建子网
+      resource "tencentcloud_subnet" "my_subnet" {
+        name              = "my-subnet"
+        vpc_id            = tencentcloud_vpc.my_vpc.id
+        cidr_block        = "10.0.1.0/24"
+        availability_zone = "ap-guangzhou-3"  # 替换为您想要使用的可用区
+      }
+      
+      # 创建 Redis 实例
+      resource "tencentcloud_redis_instance" "my_redis" {
+        type_id           = 2  # 2 表示主从版
+        mem_size          = 1024  # 内存容量，单位MB
+        name              = "my-redis"
+        port              = 6379
+        vpc_id            = tencentcloud_vpc.my_vpc.id
+        subnet_id         = tencentcloud_subnet.my_subnet.id
+        password          = "YourStrongPassword123"  # 请使用强密码
+        project_id        = 0
+        availability_zone = "ap-guangzhou-3"  # 替换为您想要使用的可用区
+      }
+  providerConfigRef:
+    name: provider-terraform

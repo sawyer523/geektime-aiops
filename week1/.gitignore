@@ -1,0 +1,5 @@
+.gitignore
+.idea
+.terraform.lock.hcl
+/terraform/.terraform/
+/yaml2infra/terraform/.terraform/
