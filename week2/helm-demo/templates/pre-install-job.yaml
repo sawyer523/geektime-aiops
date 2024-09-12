@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}-pre-install-job
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "-5"
+spec:
+  template:
+    metadata:
+      name: {{ .Release.Name }}-pre-install-job
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: pre-install-job
+        image: busybox
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          echo "这是一个 Pre-install Hook Job"
+          echo "正在准备安装 {{ .Chart.Name }} chart，版本 {{ .Chart.Version }}"
+          echo "发布名称: {{ .Release.Name }}"
