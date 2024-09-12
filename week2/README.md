@@ -1,4 +1,4 @@
-1. 为这段 Golang 代码写一个多阶段构建的 [Dockerfile](https://gist.github.com/abhishekkr/3beebbc1db54b3b54914#file-tcp_server-go)
+1. 为[这段 Golang 代码](https://gist.github.com/abhishekkr/3beebbc1db54b3b54914#file-tcp_server-go) 写一个多阶段构建的 [Dockerfile](./go/Dockerfile)
 ```shell
 ❯ docker build  -t tcp-server . --load
 [+] Building 2.3s (15/15) FINISHED                                             docker-container:desktop-linux
