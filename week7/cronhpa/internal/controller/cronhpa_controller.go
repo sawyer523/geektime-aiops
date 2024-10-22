@@ -70,14 +70,14 @@ func (r *CronHPAReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 				Name:      cornHPA.Name,
 				Namespace: cornHPA.Namespace,
 			},
-			Data:       cornHPA.Spec.ConfigMap.Data,
-			BinaryData: cornHPA.Spec.ConfigMap.BinaryData,
-			Immutable:  cornHPA.Spec.ConfigMap.Immutable,
 		}
 
 		// Create or update the CronHPA ConfigMap
 		res, err := controllerutil.CreateOrUpdate(
 			ctx, r.Client, cm, func() error {
+				cm.Data = cornHPA.Spec.ConfigMap.Data
+				cm.BinaryData = cornHPA.Spec.ConfigMap.BinaryData
+				cm.Immutable = cornHPA.Spec.ConfigMap.Immutable
 				return controllerutil.SetOwnerReference(&cornHPA, cm, r.Scheme)
 			},
 		)
