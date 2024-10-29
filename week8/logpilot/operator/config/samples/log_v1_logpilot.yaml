@@ -1,0 +1,15 @@
+apiVersion: log.aiops.com/v1
+kind: LogPilot
+metadata:
+  labels:
+    app.kubernetes.io/name: logpilot
+    app.kubernetes.io/managed-by: kustomize
+  name: logpilot-sample
+spec:
+  lokiURL: "http://192.168.50.55:31000"
+  lokiPromQL: '{app="payment"} |= `ERROR`'
+  llmEndpoint: "https://vip.apiyi.com/v1"
+  llmToken: ""
+  llmModel: "gpt-4o"
+  llmType: "openai" # ollama
+  feishuWebhook: "https://open.feishu.cn/open-apis/bot/v2/hook/d5e267dc-a92f-43d3-bc45-106b5e718c49"
